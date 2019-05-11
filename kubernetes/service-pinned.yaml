@@ -1,0 +1,21 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: example-function-a
+spec:
+  release:
+    revisions: $revision
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: salaboy/example-function-a:0.0.1
+            env:
+              - name: MESSAGE_PREFIX
+                value: Namaste
+            livenessProbe:
+              httpGet:
+                path: /healthz
+            readinessProbe:
+              httpGet:
+                path: /healthz
