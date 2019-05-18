@@ -12,26 +12,11 @@ public class FunctionController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FunctionController.class);
 
-    private static final String RESPONSE_STRING_FORMAT = "%s %s example-function-a => '%s' : %d\n";
 
-    private final SimpleDateFormat SDF = new SimpleDateFormat("HH:mm:ss");
-
-    private static final String HOSTNAME =
-        parseContainerIdFromHostname(System.getenv().getOrDefault("HOSTNAME", "unknown"));
-
-    static String parseContainerIdFromHostname(String hostname) {
-        return hostname.replaceAll("example-function-a-v\\d+-", "");
-    }
-
-    @Value("${MESSAGE_PREFIX:Hi}")
-    private String prefix;
-
-    /**
-     * Counter to help us see the lifecycle
-     */
     private int count = 0;
 
 
+    //@TODO: improve response type to ASCII art
     @GetMapping("/")
     public String calculateDiscount() {
         count++;
