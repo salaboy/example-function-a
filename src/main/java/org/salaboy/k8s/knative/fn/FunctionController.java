@@ -24,11 +24,6 @@ public class FunctionController {
     public @ResponseBody
     String eventCalculate(@RequestBody String cloudEventJson) {
         count++;
-        //  String greeterHost = String.format(RESPONSE_STRING_FORMAT, ""," Event ", HOSTNAME, count);
-
-        //   cloudEventJson
-//                                  .put("host",greeterHost.replace("\n","").trim())
-//                                  .put("time",SDF.format(new Date()));
         LOGGER.info("Event Message Received \n {}", cloudEventJson);
         return "Event Message Received: " + cloudEventJson;
     }
